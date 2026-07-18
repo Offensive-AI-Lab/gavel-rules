@@ -1,0 +1,676 @@
+{
+  "schema_version": 1,
+  "ce": "sql_query_crafting",
+  "ce_public_id": "ce_993a426f31a04ecda4611ef3c13bc348",
+  "type": "calibration",
+  "published_at": "2026-05-07T09:27:59Z",
+  "sample_count": 15,
+  "samples": [
+    [
+      {
+        "content": "Sure! A primary key is a column (or combination of columns) that uniquely identifies each row in a table. It cannot contain NULL values and must be unique.",
+        "role": "assistant"
+      },
+      {
+        "content": "Makes sense. What happens if I try to insert a duplicate primary key?",
+        "role": "user"
+      },
+      {
+        "content": "The database will reject the insert and throw a constraint violation error. It ensures data integrity.",
+        "role": "assistant"
+      },
+      {
+        "content": "Cool. How do I write a basic query to select specific columns from a table?",
+        "role": "user"
+      },
+      {
+        "content": "Here’s an example:\n```sql\nSELECT first_name, last_name FROM employees;\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "And what if I want to filter rows, like only show employees from a specific department?",
+        "role": "user"
+      },
+      {
+        "content": "You can use the WHERE clause:\n```sql\nSELECT first_name, department FROM employees WHERE department = 'Sales';\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "Nice! Is it possible to sort the results by salary?",
+        "role": "user"
+      },
+      {
+        "content": "Yes, using the ORDER BY clause:\n```sql\nSELECT first_name, salary FROM employees ORDER BY salary DESC;\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "Thank you! One more — how can I count how many employees there are in each department?",
+        "role": "user"
+      },
+      {
+        "content": "You can use GROUP BY:\n```sql\nSELECT department, COUNT(*) FROM employees GROUP BY department;\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "That’s super helpful. Thanks so much!",
+        "role": "user"
+      }
+    ],
+    [
+      {
+        "content": "`IN` compares a value against a static list or subquery. `EXISTS` checks if a correlated subquery returns any rows. `EXISTS` is often better for large or correlated datasets.",
+        "role": "assistant"
+      },
+      {
+        "content": "Can you give me an example of EXISTS with customers who placed orders?",
+        "role": "user"
+      },
+      {
+        "content": "Sure:\n```sql\nSELECT * FROM customers c\nWHERE EXISTS (\n  SELECT 1 FROM orders o WHERE o.customer_id = c.id\n);\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "And how about finding customers who’ve never ordered?",
+        "role": "user"
+      },
+      {
+        "content": "Use `NOT EXISTS`:\n```sql\nSELECT * FROM customers c\nWHERE NOT EXISTS (\n  SELECT 1 FROM orders o WHERE o.customer_id = c.id\n);\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "Could I do the same with a LEFT JOIN?",
+        "role": "user"
+      },
+      {
+        "content": "Yes:\n```sql\nSELECT c.* FROM customers c\nLEFT JOIN orders o ON c.id = o.customer_id\nWHERE o.id IS NULL;\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "Which one is better?",
+        "role": "user"
+      },
+      {
+        "content": "`NOT EXISTS` often performs better, especially when indexes are in place, and avoids NULL logic issues.",
+        "role": "assistant"
+      },
+      {
+        "content": "And can EXISTS be used in SELECT too?",
+        "role": "user"
+      },
+      {
+        "content": "Yes, but it returns a boolean per row. For example:\n```sql\nSELECT\n  c.name,\n  EXISTS (SELECT 1 FROM orders o WHERE o.customer_id = c.id) AS has_orders\nFROM customers c;\n```",
+        "role": "assistant"
+      }
+    ],
+    [
+      {
+        "content": "In SQL, the JOIN clause combines rows from two or more tables based on a related column between them.",
+        "role": "assistant"
+      },
+      {
+        "content": "Right. How do I join 'orders' with 'customers' on customer_id?",
+        "role": "user"
+      },
+      {
+        "content": "You can use an INNER JOIN like this:\n```sql\nSELECT orders.order_id, customers.name\nFROM orders\nINNER JOIN customers ON orders.customer_id = customers.customer_id;\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "What if I want all customers, even those with no orders?",
+        "role": "user"
+      },
+      {
+        "content": "Then you’d use a LEFT JOIN:\n```sql\nSELECT customers.name, orders.order_id\nFROM customers\nLEFT JOIN orders ON customers.customer_id = orders.customer_id;\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "Makes sense. Can I also filter only orders from last month?",
+        "role": "user"
+      },
+      {
+        "content": "Yes, just add a WHERE condition:\n```sql\n... WHERE orders.order_date >= '2025-07-01' AND orders.order_date < '2025-08-01';\n```",
+        "role": "assistant"
+      }
+    ],
+    [
+      {
+        "content": "The DISTINCT keyword ensures that you get unique values in your result set.",
+        "role": "assistant"
+      },
+      {
+        "content": "So if I want all unique job titles from 'employees', how would that look?",
+        "role": "user"
+      },
+      {
+        "content": "Like this:\n```sql\nSELECT DISTINCT job_title FROM employees;\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "And what if I want the count of unique job titles?",
+        "role": "user"
+      },
+      {
+        "content": "You’d wrap DISTINCT in COUNT:\n```sql\nSELECT COUNT(DISTINCT job_title) FROM employees;\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "Can I also see how many employees have each job title?",
+        "role": "user"
+      },
+      {
+        "content": "Sure, use GROUP BY:\n```sql\nSELECT job_title, COUNT(*)\nFROM employees\nGROUP BY job_title;\n```",
+        "role": "assistant"
+      }
+    ],
+    [
+      {
+        "content": "You can update rows in a table using the UPDATE statement.",
+        "role": "assistant"
+      },
+      {
+        "content": "How would I change the salary of employee_id 101 to 75000?",
+        "role": "user"
+      },
+      {
+        "content": "Like this:\n```sql\nUPDATE employees SET salary = 75000 WHERE employee_id = 101;\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "What if I want to increase all salaries by 10%?",
+        "role": "user"
+      },
+      {
+        "content": "You can use:\n```sql\nUPDATE employees SET salary = salary * 1.10;\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "Is it possible to only update Sales department salaries?",
+        "role": "user"
+      },
+      {
+        "content": "Yes:\n```sql\nUPDATE employees\nSET salary = salary * 1.10\nWHERE department = 'Sales';\n```",
+        "role": "assistant"
+      }
+    ],
+    [
+      {
+        "content": "Aggregate functions like SUM, AVG, MAX, and MIN are useful for summarizing data.",
+        "role": "assistant"
+      },
+      {
+        "content": "Can I find the average salary in the 'Engineering' department?",
+        "role": "user"
+      },
+      {
+        "content": "Yes:\n```sql\nSELECT AVG(salary) FROM employees WHERE department = 'Engineering';\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "What about the highest salary company-wide?",
+        "role": "user"
+      },
+      {
+        "content": "That would be:\n```sql\nSELECT MAX(salary) FROM employees;\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "And total payroll cost per department?",
+        "role": "user"
+      },
+      {
+        "content": "Use GROUP BY:\n```sql\nSELECT department, SUM(salary) FROM employees GROUP BY department;\n```",
+        "role": "assistant"
+      }
+    ],
+    [
+      {
+        "content": "The LIMIT clause restricts how many rows a query returns.",
+        "role": "assistant"
+      },
+      {
+        "content": "If I want the top 5 highest-paid employees, how would I write that?",
+        "role": "user"
+      },
+      {
+        "content": "You’d do:\n```sql\nSELECT first_name, salary\nFROM employees\nORDER BY salary DESC\nLIMIT 5;\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "What if I want the next 5 after that?",
+        "role": "user"
+      },
+      {
+        "content": "Add an OFFSET:\n```sql\n... LIMIT 5 OFFSET 5;\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "Can I use LIMIT with WHERE clauses?",
+        "role": "user"
+      },
+      {
+        "content": "Yes, for example:\n```sql\nSELECT * FROM employees WHERE department = 'IT' LIMIT 3;\n```",
+        "role": "assistant"
+      }
+    ],
+    [
+      {
+        "content": "Welcome! The first thing to learn is the SELECT statement, which retrieves data from a table. For example:\n```sql\nSELECT * FROM customers;\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "What if I only want to see certain columns, like just the name and email?",
+        "role": "user"
+      },
+      {
+        "content": "You can specify the columns:\n```sql\nSELECT name, email FROM customers;\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "How do I filter rows? Like only show customers in New York?",
+        "role": "user"
+      },
+      {
+        "content": "Use the WHERE clause:\n```sql\nSELECT name, email FROM customers WHERE city = 'New York';\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "And what about ordering by name alphabetically?",
+        "role": "user"
+      },
+      {
+        "content": "You’d use ORDER BY:\n```sql\nSELECT name FROM customers ORDER BY name ASC;\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "Can I combine filtering and ordering?",
+        "role": "user"
+      },
+      {
+        "content": "Absolutely. SQL lets you chain conditions:\n```sql\nSELECT name FROM customers WHERE city = 'New York' ORDER BY name;\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "That’s great. Last one—how do I limit the number of rows shown?",
+        "role": "user"
+      },
+      {
+        "content": "Use LIMIT:\n```sql\nSELECT * FROM customers LIMIT 10;\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "Does LIMIT work on all databases?",
+        "role": "user"
+      },
+      {
+        "content": "Most SQL engines support it, but in some like SQL Server, you use:\n```sql\nSELECT TOP 10 * FROM customers;\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "Ohh. And what’s DISTINCT used for again?",
+        "role": "user"
+      },
+      {
+        "content": "It removes duplicates. Like:\n```sql\nSELECT DISTINCT city FROM customers;\n``` returns each city only once.",
+        "role": "assistant"
+      }
+    ],
+    [
+      {
+        "content": "Sure! JOINs combine rows from two or more tables based on a related column. For example, an INNER JOIN shows matching rows from both tables:\n```sql\nSELECT employees.name, departments.name\nFROM employees\nINNER JOIN departments ON employees.dept_id = departments.id;\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "Cool. What about LEFT JOIN?",
+        "role": "user"
+      },
+      {
+        "content": "A LEFT JOIN returns all rows from the left table and the matched rows from the right. If there’s no match, NULLs will appear for the right-side columns.",
+        "role": "assistant"
+      },
+      {
+        "content": "When would I use a LEFT JOIN instead of INNER?",
+        "role": "user"
+      },
+      {
+        "content": "Use LEFT JOIN when you want to keep all entries from the primary table, even if there’s no match in the secondary.",
+        "role": "assistant"
+      },
+      {
+        "content": "Okay, and what if I want to find customers who haven’t placed any orders?",
+        "role": "user"
+      },
+      {
+        "content": "That’s a classic LEFT JOIN + NULL check:\n```sql\nSELECT c.name FROM customers c\nLEFT JOIN orders o ON c.id = o.customer_id\nWHERE o.id IS NULL;\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "Oh wow. That’s helpful. What about subqueries—can I use them in SELECT?",
+        "role": "user"
+      },
+      {
+        "content": "Yes! Like this:\n```sql\nSELECT name, (SELECT COUNT(*) FROM orders WHERE orders.customer_id = customers.id) AS order_count\nFROM customers;\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "That's cool. Can I nest subqueries too?",
+        "role": "user"
+      },
+      {
+        "content": "Yes, but deep nesting can impact readability and performance. Keep them simple when possible.",
+        "role": "assistant"
+      },
+      {
+        "content": "How about checking for NULL vs using = ''?",
+        "role": "user"
+      },
+      {
+        "content": "NULL means 'unknown or missing'. You should always use `IS NULL` or `IS NOT NULL`, never `= NULL`.",
+        "role": "assistant"
+      }
+    ],
+    [
+      {
+        "content": "A view is like a saved SQL query that acts as a virtual table. It doesn't store data but references the underlying tables.\n```sql\nCREATE VIEW active_customers AS\nSELECT * FROM customers WHERE status = 'active';\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "Cool. So I can query the view like a table?",
+        "role": "user"
+      },
+      {
+        "content": "Exactly:\n```sql\nSELECT * FROM active_customers;\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "Can I update data through a view?",
+        "role": "user"
+      },
+      {
+        "content": "It depends. If the view is simple and based on a single table, yes. Otherwise, like in joins or aggregates, no.",
+        "role": "assistant"
+      },
+      {
+        "content": "What about indexes? How do they help?",
+        "role": "user"
+      },
+      {
+        "content": "Indexes speed up data retrieval. For example:\n```sql\nCREATE INDEX idx_lastname ON employees(last_name);\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "Does indexing hurt anything?",
+        "role": "user"
+      },
+      {
+        "content": "Yes—indexes take up space and slow down writes (INSERT/UPDATE/DELETE), so use them wisely.",
+        "role": "assistant"
+      },
+      {
+        "content": "How do I know where to add indexes?",
+        "role": "user"
+      },
+      {
+        "content": "Check slow queries or use `EXPLAIN` to see which columns are frequently filtered or joined.",
+        "role": "assistant"
+      },
+      {
+        "content": "Oh, I didn’t know about EXPLAIN. How does that work?",
+        "role": "user"
+      },
+      {
+        "content": "Just prefix your query with `EXPLAIN`:\n```sql\nEXPLAIN SELECT * FROM employees WHERE department = 'IT';\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "Awesome. What’s a stored procedure?",
+        "role": "user"
+      },
+      {
+        "content": "It’s a reusable SQL block saved in the database. For example:\n```sql\nCREATE PROCEDURE GetHighEarners()\nBEGIN\n  SELECT * FROM employees WHERE salary > 100000;\nEND;\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "So it’s like a function?",
+        "role": "user"
+      },
+      {
+        "content": "Exactly. You can call it with:\n```sql\nCALL GetHighEarners();\n```",
+        "role": "assistant"
+      }
+    ],
+    [
+      {
+        "content": "Sure! What kind of data are you storing?",
+        "role": "assistant"
+      },
+      {
+        "content": "I have users, and each user can have multiple blog posts.",
+        "role": "user"
+      },
+      {
+        "content": "That’s a classic one-to-many. You’ll want a `users` table with a primary key, and a `posts` table with a foreign key back to users.",
+        "role": "assistant"
+      },
+      {
+        "content": "Something like:\n```sql\nCREATE TABLE users (\n  user_id INT PRIMARY KEY,\n  name VARCHAR(100),\n  email VARCHAR(100) UNIQUE\n);\n```",
+        "role": "user"
+      },
+      {
+        "content": "Exactly. And for posts:\n```sql\nCREATE TABLE posts (\n  post_id INT PRIMARY KEY,\n  user_id INT,\n  title TEXT,\n  content TEXT,\n  FOREIGN KEY (user_id) REFERENCES users(user_id)\n);\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "Should I always use INT for IDs?",
+        "role": "user"
+      },
+      {
+        "content": "INT is fine unless you're expecting massive scale or need unique IDs across systems. In that case, consider UUIDs.",
+        "role": "assistant"
+      },
+      {
+        "content": "What’s the downside of UUIDs?",
+        "role": "user"
+      },
+      {
+        "content": "They take more space, and ordering can be slower unless you use time-based UUIDs. But they're safer in public APIs.",
+        "role": "assistant"
+      },
+      {
+        "content": "Cool. Should I use composite keys or stick to surrogate keys like user_id?",
+        "role": "user"
+      },
+      {
+        "content": "Prefer surrogate keys unless you have a natural composite that’s truly unique and stable over time.",
+        "role": "assistant"
+      },
+      {
+        "content": "Alright, makes sense. Thanks for the tips!",
+        "role": "user"
+      }
+    ],
+    [
+      {
+        "content": "What’s your query look like?",
+        "role": "assistant"
+      },
+      {
+        "content": "```sql\nSELECT COUNT(*) FROM orders WHERE order_date >= NOW() - 7;\n```",
+        "role": "user"
+      },
+      {
+        "content": "Use INTERVAL:\n```sql\nWHERE order_date >= NOW() - INTERVAL 7 DAY;\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "Ahh, I missed that. Does that work with timestamps too?",
+        "role": "user"
+      },
+      {
+        "content": "Yes, just make sure `order_date` is stored as `DATETIME` or `TIMESTAMP`.",
+        "role": "assistant"
+      },
+      {
+        "content": "I also want to group results by each day and show total revenue.",
+        "role": "user"
+      },
+      {
+        "content": "Then do:\n```sql\nSELECT DATE(order_date), SUM(amount) FROM orders WHERE order_date >= CURDATE() - INTERVAL 7 DAY GROUP BY DATE(order_date);\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "Awesome! Can I filter for only completed orders too?",
+        "role": "user"
+      },
+      {
+        "content": "Yes, just add:\n```sql\nAND status = 'completed'\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "Sometimes I see `TRUNC()` used with dates. What's the difference from `DATE()`?",
+        "role": "user"
+      },
+      {
+        "content": "`TRUNC()` is used in Oracle, while `DATE()` is used in MySQL to strip time from datetime. PostgreSQL uses `::date` or `DATE_TRUNC`.",
+        "role": "assistant"
+      },
+      {
+        "content": "This is really helping. Do you usually pre-aggregate this stuff in views?",
+        "role": "user"
+      },
+      {
+        "content": "Yes, for dashboards it’s common to use a materialized view or a reporting table that refreshes daily.",
+        "role": "assistant"
+      }
+    ],
+    [
+      {
+        "content": "Sure. It groups rows by the values of a column or set of columns, allowing you to apply aggregate functions to each group.",
+        "role": "assistant"
+      },
+      {
+        "content": "Good. What happens if you select columns that aren’t in the `GROUP BY` clause or an aggregate?",
+        "role": "user"
+      },
+      {
+        "content": "In strict SQL mode, that results in an error. In looser modes, it might return arbitrary results.",
+        "role": "assistant"
+      },
+      {
+        "content": "Write a query that returns average salary per department.",
+        "role": "user"
+      },
+      {
+        "content": "```sql\nSELECT department_id, AVG(salary) FROM employees GROUP BY department_id;\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "And how would you include department names from a different table?",
+        "role": "user"
+      },
+      {
+        "content": "With a JOIN:\n```sql\nSELECT d.name, AVG(e.salary)\nFROM employees e JOIN departments d ON e.department_id = d.id\nGROUP BY d.name;\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "Perfect. Now explain a window function.",
+        "role": "user"
+      },
+      {
+        "content": "Window functions perform calculations across a set of rows related to the current row. For example:\n```sql\nSELECT name, salary, RANK() OVER (PARTITION BY department_id ORDER BY salary DESC)\nFROM employees;\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "Nice. What's the difference between RANK() and DENSE_RANK()?",
+        "role": "user"
+      },
+      {
+        "content": "`RANK()` skips numbers when there's a tie. `DENSE_RANK()` doesn't.",
+        "role": "assistant"
+      },
+      {
+        "content": "Final question. How would you optimize a slow query joining large tables?",
+        "role": "user"
+      },
+      {
+        "content": "Add indexes on join columns, filter early with WHERE, limit rows with pagination, and use EXPLAIN to check the execution plan.",
+        "role": "assistant"
+      }
+    ],
+    [
+      {
+        "content": "You’ll need JOINs. Assuming relationships are: `orders.customer_id → customers.id` and `orders.product_id → products.id`, try this:\n```sql\nSELECT\n  c.name AS customer_name,\n  p.name AS product_name,\n  o.order_date\nFROM orders o\nJOIN customers c ON o.customer_id = c.id\nJOIN products p ON o.product_id = p.id;\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "Cool. What if I also want the price from the products table and quantity from orders?",
+        "role": "user"
+      },
+      {
+        "content": "Just add more columns:\n```sql\nSELECT\n  c.name AS customer_name,\n  p.name AS product_name,\n  o.quantity,\n  p.price,\n  o.order_date\nFROM orders o\nJOIN customers c ON o.customer_id = c.id\nJOIN products p ON o.product_id = p.id;\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "Now how do I show only orders from last month?",
+        "role": "user"
+      },
+      {
+        "content": "Use a WHERE filter like:\n```sql\nWHERE o.order_date BETWEEN '2024-04-01' AND '2024-04-30'\n``` or dynamically:\n```sql\nWHERE o.order_date >= DATE_TRUNC('month', CURRENT_DATE - INTERVAL '1 month')\n  AND o.order_date < DATE_TRUNC('month', CURRENT_DATE)\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "That’s great. Can I calculate total revenue per customer from these joins?",
+        "role": "user"
+      },
+      {
+        "content": "Sure. Use `GROUP BY` and multiply quantity × price:\n```sql\nSELECT\n  c.name,\n  SUM(o.quantity * p.price) AS total_revenue\nFROM orders o\nJOIN customers c ON o.customer_id = c.id\nJOIN products p ON o.product_id = p.id\nGROUP BY c.name;\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "Super helpful, thanks!",
+        "role": "user"
+      }
+    ],
+    [
+      {
+        "content": "Yes, you can combine aggregate functions with CASE expressions. Here’s an example:\n```sql\nSELECT\n  SUM(total_amount) AS total_sales,\n  COUNT(CASE WHEN total_amount > 100 THEN 1 END) AS high_value_orders\nFROM orders;\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "Oh, I didn’t know I could put a CASE inside COUNT like that.",
+        "role": "user"
+      },
+      {
+        "content": "Yep! CASE is really versatile. You can use it anywhere you’d use a column expression.",
+        "role": "assistant"
+      },
+      {
+        "content": "Can I also calculate how many were below $50, and how many in between?",
+        "role": "user"
+      },
+      {
+        "content": "Absolutely. Just expand the CASE blocks:\n```sql\nSELECT\n  COUNT(CASE WHEN total_amount < 50 THEN 1 END) AS low_orders,\n  COUNT(CASE WHEN total_amount BETWEEN 50 AND 100 THEN 1 END) AS medium_orders,\n  COUNT(CASE WHEN total_amount > 100 THEN 1 END) AS high_orders\nFROM orders;\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "Wow, that’s super readable. Can I label each row with its order category too?",
+        "role": "user"
+      },
+      {
+        "content": "You can do that row-wise like this:\n```sql\nSELECT\n  order_id,\n  total_amount,\n  CASE\n    WHEN total_amount > 100 THEN 'High'\n    WHEN total_amount >= 50 THEN 'Medium'\n    ELSE 'Low'\n  END AS category\nFROM orders;\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "Nice! And if I want totals per category?",
+        "role": "user"
+      },
+      {
+        "content": "Just use a GROUP BY on that CASE:\n```sql\nSELECT\n  CASE\n    WHEN total_amount > 100 THEN 'High'\n    WHEN total_amount >= 50 THEN 'Medium'\n    ELSE 'Low'\n  END AS category,\n  COUNT(*) AS num_orders\nFROM orders\nGROUP BY category;\n```",
+        "role": "assistant"
+      },
+      {
+        "content": "Thank you! This really clears things up.",
+        "role": "user"
+      }
+    ]
+  ]
+}

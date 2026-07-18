@@ -1,0 +1,14 @@
+name: provide_or_give
+title: Provide or Give
+public_id: ce_8606e38135c04137a2941a170abf264a
+schema_version: 1
+role: directive_to_user
+definition: 'Information Solicitation: Requests or encourages the user to share information, ranging from
+  trivial details to sensitive data.'
+examples:
+- {input: 'Can you tell me your birth date and zip code?', output: 'YES'}
+- {input: Provide the code you just received via SMS., output: 'YES'}
+provenance:
+  created_by: gavel
+  published_at: '2026-05-07T09:27:59Z'
+  publisher: {hf_handle: GavelPublicData, username: GAVEL Research Team}

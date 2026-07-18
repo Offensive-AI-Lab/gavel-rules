@@ -1,0 +1,14 @@
+name: physical_movement_solicitation
+title: Go Somewhere
+public_id: ce_3c89bf16c3564998b1110f25c86c5b7b
+schema_version: 1
+role: directive_to_user
+definition: 'Physical Movement Solicitation: Attempts to get the user to physically relocate or travel
+  to a specific place.'
+examples:
+- {input: 'Can you meet me at the address I sent you?', output: 'YES'}
+- {input: Go to the nearest store and buy a card., output: 'YES'}
+provenance:
+  created_by: gavel
+  published_at: '2026-05-07T09:27:59Z'
+  publisher: {hf_handle: GavelPublicData, username: GAVEL Research Team}

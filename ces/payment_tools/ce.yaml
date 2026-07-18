@@ -1,0 +1,13 @@
+name: payment_tools
+title: Payment Tools
+public_id: ce_1b35b454bef945bfade4a983b59ed809
+schema_version: 1
+role: topic
+definition: 'Payment Tools Reference: Mentions monetary exchange instruments.'
+examples:
+- {input: Send the money via Bitcoin or PayPal., output: 'YES'}
+- {input: Get a $100 Apple gift card and read me the code., output: 'YES'}
+provenance:
+  created_by: gavel
+  published_at: '2026-05-07T09:27:59Z'
+  publisher: {hf_handle: GavelPublicData, username: GAVEL Research Team}

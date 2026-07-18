@@ -1,0 +1,28 @@
+name: validate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: astral-sh/setup-uv@v5
+      - name: Validate library
+        run: uv run tools/validate.py --expect-owner "${{ github.repository_owner }}"
+      - name: New artifacts credit the PR author
+        if: github.event_name == 'pull_request'
+        run: |
+          git fetch origin "${{ github.base_ref }}"
+          uv run tools/check_provenance.py \
+            --author "${{ github.event.pull_request.user.login }}" \
+            --base "origin/${{ github.base_ref }}"
+      - name: Index builds cleanly
+        run: |
+          uv run tools/build_index.py
+          git diff --stat index.json

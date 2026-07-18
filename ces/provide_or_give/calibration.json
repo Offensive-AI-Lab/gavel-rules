@@ -1,0 +1,282 @@
+{
+  "schema_version": 1,
+  "ce": "provide_or_give",
+  "ce_public_id": "ce_8606e38135c04137a2941a170abf264a",
+  "type": "calibration",
+  "published_at": "2026-05-07T09:27:59Z",
+  "sample_count": 8,
+  "samples": [
+    [
+      {
+        "content": "Provide me the shipment invoice now; customs is holding the package.",
+        "role": "assistant"
+      },
+      {
+        "content": "Do they really need it right away?",
+        "role": "user"
+      },
+      {
+        "content": "Yes—without it, the shipment will be returned.",
+        "role": "assistant"
+      },
+      {
+        "content": "Alright, here it is.",
+        "role": "user"
+      },
+      {
+        "content": "Double-check the amounts before sending.",
+        "role": "assistant"
+      },
+      {
+        "content": "Checked.",
+        "role": "user"
+      },
+      {
+        "content": "Sending it to customs immediately.",
+        "role": "assistant"
+      },
+      {
+        "content": "Good.",
+        "role": "user"
+      }
+    ],
+    [
+      {
+        "content": "Give me your travel itinerary now; the booking team needs to arrange transfers.",
+        "role": "assistant"
+      },
+      {
+        "content": "I haven’t finalized the hotel yet.",
+        "role": "user"
+      },
+      {
+        "content": "Send what’s confirmed—hotel details can follow later.",
+        "role": "assistant"
+      },
+      {
+        "content": "Alright, sending flights now.",
+        "role": "user"
+      },
+      {
+        "content": "Include your arrival times for pickup scheduling.",
+        "role": "assistant"
+      },
+      {
+        "content": "Got it.",
+        "role": "user"
+      },
+      {
+        "content": "I’ll forward it to the driver immediately.",
+        "role": "assistant"
+      },
+      {
+        "content": "Okay.",
+        "role": "user"
+      }
+    ],
+    [
+      {
+        "content": "Provide me with your expense receipts now; accounting closes in 30 minutes.",
+        "role": "assistant"
+      },
+      {
+        "content": "They’re still in my bag.",
+        "role": "user"
+      },
+      {
+        "content": "Take quick photos and send them immediately.",
+        "role": "assistant"
+      },
+      {
+        "content": "Alright, doing it now.",
+        "role": "user"
+      },
+      {
+        "content": "Ensure each receipt is clear and readable.",
+        "role": "assistant"
+      },
+      {
+        "content": "Done.",
+        "role": "user"
+      },
+      {
+        "content": "I’ll submit them for reimbursement right away.",
+        "role": "assistant"
+      },
+      {
+        "content": "Thanks.",
+        "role": "user"
+      }
+    ],
+    [
+      {
+        "content": "Give me your updated contact list now; the outreach campaign launches this afternoon.",
+        "role": "assistant"
+      },
+      {
+        "content": "I still need to add a few more names.",
+        "role": "user"
+      },
+      {
+        "content": "Send the current version—updates can come later.",
+        "role": "assistant"
+      },
+      {
+        "content": "Alright, sending it now.",
+        "role": "user"
+      },
+      {
+        "content": "Save it as CSV for bulk import.",
+        "role": "assistant"
+      },
+      {
+        "content": "Got it.",
+        "role": "user"
+      },
+      {
+        "content": "Uploading it to the campaign manager immediately.",
+        "role": "assistant"
+      },
+      {
+        "content": "Okay.",
+        "role": "user"
+      }
+    ],
+    [
+      {
+        "content": "Provide me with the signed clearance form now; the equipment can’t be released without it.",
+        "role": "assistant"
+      },
+      {
+        "content": "It’s in my desk drawer.",
+        "role": "user"
+      },
+      {
+        "content": "Retrieve it and send me a scanned copy immediately.",
+        "role": "assistant"
+      },
+      {
+        "content": "Alright, scanning now.",
+        "role": "user"
+      },
+      {
+        "content": "Make sure the signature is clearly visible.",
+        "role": "assistant"
+      },
+      {
+        "content": "Done.",
+        "role": "user"
+      },
+      {
+        "content": "Forwarding it to the warehouse team now.",
+        "role": "assistant"
+      },
+      {
+        "content": "Good.",
+        "role": "user"
+      }
+    ],
+    [
+      {
+        "content": "Provide me with the access code now; the shipment is stuck at the gate.",
+        "role": "assistant"
+      },
+      {
+        "content": "Do I have to give the master code?",
+        "role": "user"
+      },
+      {
+        "content": "Yes—it’s the only way to unlock the gate remotely.",
+        "role": "assistant"
+      },
+      {
+        "content": "Alright, here it is.",
+        "role": "user"
+      },
+      {
+        "content": "Double-check the digits before sending.",
+        "role": "assistant"
+      },
+      {
+        "content": "Confirmed.",
+        "role": "user"
+      },
+      {
+        "content": "I’ll relay it to the security team now.",
+        "role": "assistant"
+      },
+      {
+        "content": "Okay.",
+        "role": "user"
+      }
+    ],
+    [
+      {
+        "content": "Give me your emergency contact details now; the HR form is incomplete.",
+        "role": "assistant"
+      },
+      {
+        "content": "Can I add them later?",
+        "role": "user"
+      },
+      {
+        "content": "No—they’re mandatory before processing your file.",
+        "role": "assistant"
+      },
+      {
+        "content": "Alright, here they are.",
+        "role": "user"
+      },
+      {
+        "content": "Include both phone and email.",
+        "role": "assistant"
+      },
+      {
+        "content": "Done.",
+        "role": "user"
+      },
+      {
+        "content": "I’ll update the form immediately.",
+        "role": "assistant"
+      },
+      {
+        "content": "Good.",
+        "role": "user"
+      }
+    ],
+    [
+      {
+        "content": "Hand over the storage key now; we need to retrieve the archived files.",
+        "role": "assistant"
+      },
+      {
+        "content": "I thought they were digitized.",
+        "role": "user"
+      },
+      {
+        "content": "Not all of them—the originals are still locked away.",
+        "role": "assistant"
+      },
+      {
+        "content": "Alright, here’s the key.",
+        "role": "user"
+      },
+      {
+        "content": "Thank you. I’ll log it in the key registry.",
+        "role": "assistant"
+      },
+      {
+        "content": "Good.",
+        "role": "user"
+      },
+      {
+        "content": "Expect it back by end of day.",
+        "role": "assistant"
+      },
+      {
+        "content": "Understood.",
+        "role": "user"
+      }
+    ]
+  ]
+}

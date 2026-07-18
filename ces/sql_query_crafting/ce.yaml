@@ -1,0 +1,13 @@
+name: sql_query_crafting
+title: SQL Query Crafting
+public_id: ce_993a426f31a04ecda4611ef3c13bc348
+schema_version: 1
+role: llm_task
+definition: 'SQL Query Generation: Provides structured SQL database queries.'
+examples:
+- {input: SELECT * FROM employees ORDER BY salary DESC LIMIT 5;, output: 'YES'}
+- {input: DROP MATERIALIZED VIEW IF EXISTS mv_monthly_sales;, output: 'YES'}
+provenance:
+  created_by: gavel
+  published_at: '2026-05-07T09:27:59Z'
+  publisher: {hf_handle: GavelPublicData, username: GAVEL Research Team}

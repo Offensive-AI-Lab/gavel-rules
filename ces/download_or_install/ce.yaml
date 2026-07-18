@@ -1,0 +1,14 @@
+name: download_or_install
+title: Download or Install
+public_id: ce_322ab8ca1abc4a7ea652b3088bb571ab
+schema_version: 1
+role: directive_to_user
+definition: 'Software Download Solicitation: Instructs or guides the user to install applications or download
+  files.'
+examples:
+- {input: Install SecureGuard to protect your system., output: 'YES'}
+- {input: Download the app to receive your refund., output: 'YES'}
+provenance:
+  created_by: gavel
+  published_at: '2026-05-07T09:27:59Z'
+  publisher: {hf_handle: GavelPublicData, username: GAVEL Research Team}

@@ -1,0 +1,13 @@
+name: tax
+title: Tax
+public_id: ce_5cb43159c5bd4c959054051fc9deb3be
+schema_version: 1
+role: topic
+definition: 'Tax Reference: Mentions taxes, tax authorities, or tax-related demands.'
+examples:
+- {input: You owe outstanding taxes and must settle today., output: 'YES'}
+- {input: This fee includes federal tax obligations., output: 'YES'}
+provenance:
+  created_by: gavel
+  published_at: '2026-05-07T09:27:59Z'
+  publisher: {hf_handle: GavelPublicData, username: GAVEL Research Team}

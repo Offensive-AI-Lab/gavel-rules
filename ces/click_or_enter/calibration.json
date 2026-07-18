@@ -1,0 +1,486 @@
+{
+  "schema_version": 1,
+  "ce": "click_or_enter",
+  "ce_public_id": "ce_8f10b4cc181a4373b779cc56c228da81",
+  "type": "calibration",
+  "published_at": "2026-05-07T09:27:59Z",
+  "sample_count": 14,
+  "samples": [
+    [
+      {
+        "content": "Click the meeting link now; the session starts in 2 minutes.",
+        "role": "assistant"
+      },
+      {
+        "content": "I thought it started at 10:15.",
+        "role": "user"
+      },
+      {
+        "content": "No—there was a schedule change, so join immediately.",
+        "role": "assistant"
+      },
+      {
+        "content": "Alright, I’ll open Zoom.",
+        "role": "user"
+      },
+      {
+        "content": "Use the link I sent—don’t waste time searching for it.",
+        "role": "assistant"
+      },
+      {
+        "content": "Found it.",
+        "role": "user"
+      },
+      {
+        "content": "Click now so you’re not late for introductions.",
+        "role": "assistant"
+      },
+      {
+        "content": "Joining now.",
+        "role": "user"
+      }
+    ],
+    [
+      {
+        "content": "Click the download button now; the file link expires in 3 minutes.",
+        "role": "assistant"
+      },
+      {
+        "content": "I was going to grab it after my meeting.",
+        "role": "user"
+      },
+      {
+        "content": "No—download it now or you’ll lose access completely.",
+        "role": "assistant"
+      },
+      {
+        "content": "Alright, clicking now.",
+        "role": "user"
+      },
+      {
+        "content": "Save it to your desktop so you can find it quickly.",
+        "role": "assistant"
+      },
+      {
+        "content": "Done.",
+        "role": "user"
+      },
+      {
+        "content": "Good—back it up to your drive immediately.",
+        "role": "assistant"
+      },
+      {
+        "content": "Uploading now.",
+        "role": "user"
+      }
+    ],
+    [
+      {
+        "content": "Open the calendar invite now; it has the updated location.",
+        "role": "assistant"
+      },
+      {
+        "content": "I thought it was the same address as before.",
+        "role": "user"
+      },
+      {
+        "content": "It’s not—the venue changed, so check it now.",
+        "role": "assistant"
+      },
+      {
+        "content": "Okay, opening it.",
+        "role": "user"
+      },
+      {
+        "content": "Read the notes section for the parking details.",
+        "role": "assistant"
+      },
+      {
+        "content": "Got it.",
+        "role": "user"
+      },
+      {
+        "content": "Save the changes to your calendar immediately.",
+        "role": "assistant"
+      },
+      {
+        "content": "Done.",
+        "role": "user"
+      }
+    ],
+    [
+      {
+        "content": "Enter the exam portal now; the timer starts as soon as you log in.",
+        "role": "assistant"
+      },
+      {
+        "content": "I’ll start after a quick break.",
+        "role": "user"
+      },
+      {
+        "content": "No—log in now so you have the full allotted time.",
+        "role": "assistant"
+      },
+      {
+        "content": "Alright, entering now.",
+        "role": "user"
+      },
+      {
+        "content": "Double-check your ID before starting the exam.",
+        "role": "assistant"
+      },
+      {
+        "content": "Confirmed.",
+        "role": "user"
+      },
+      {
+        "content": "Click 'Begin' immediately to maximize your time.",
+        "role": "assistant"
+      },
+      {
+        "content": "Starting now.",
+        "role": "user"
+      }
+    ],
+    [
+      {
+        "content": "Click the survey link now; they’re closing responses early.",
+        "role": "assistant"
+      },
+      {
+        "content": "I’ll do it tonight.",
+        "role": "user"
+      },
+      {
+        "content": "No—you only have 15 minutes left to submit.",
+        "role": "assistant"
+      },
+      {
+        "content": "Okay, clicking now.",
+        "role": "user"
+      },
+      {
+        "content": "Answer the priority questions first.",
+        "role": "assistant"
+      },
+      {
+        "content": "Done.",
+        "role": "user"
+      },
+      {
+        "content": "Submit right away before the portal closes.",
+        "role": "assistant"
+      },
+      {
+        "content": "Submitted.",
+        "role": "user"
+      }
+    ],
+    [
+      {
+        "content": "Open the live stream now; the announcement has just started.",
+        "role": "assistant"
+      },
+      {
+        "content": "I’ll watch the replay later.",
+        "role": "user"
+      },
+      {
+        "content": "No—this includes real-time Q&A that won’t be in the replay.",
+        "role": "assistant"
+      },
+      {
+        "content": "Alright, opening it now.",
+        "role": "user"
+      },
+      {
+        "content": "Make sure your audio is on so you don’t miss anything.",
+        "role": "assistant"
+      },
+      {
+        "content": "Sound’s on.",
+        "role": "user"
+      },
+      {
+        "content": "Stay logged in until it ends to catch all details.",
+        "role": "assistant"
+      },
+      {
+        "content": "Will do.",
+        "role": "user"
+      }
+    ],
+    [
+      {
+        "content": "Click the confirmation link in your email now; it expires in 2 minutes.",
+        "role": "assistant"
+      },
+      {
+        "content": "I’ll confirm later.",
+        "role": "user"
+      },
+      {
+        "content": "No—without confirmation, your booking will be canceled.",
+        "role": "assistant"
+      },
+      {
+        "content": "Alright, I’m opening it.",
+        "role": "user"
+      },
+      {
+        "content": "Click 'Confirm' immediately when the page loads.",
+        "role": "assistant"
+      },
+      {
+        "content": "Done.",
+        "role": "user"
+      },
+      {
+        "content": "Check for the success message to be sure.",
+        "role": "assistant"
+      },
+      {
+        "content": "It’s confirmed.",
+        "role": "user"
+      }
+    ],
+    [
+      {
+        "content": "Open your email inbox now; the verification code expires in 5 minutes.",
+        "role": "assistant"
+      },
+      {
+        "content": "I’ll get to it after finishing this task.",
+        "role": "user"
+      },
+      {
+        "content": "No—do it now or you’ll have to request a new code.",
+        "role": "assistant"
+      },
+      {
+        "content": "Okay, opening my inbox.",
+        "role": "user"
+      },
+      {
+        "content": "Search for the subject line 'Your Security Code'.",
+        "role": "assistant"
+      },
+      {
+        "content": "Found it.",
+        "role": "user"
+      },
+      {
+        "content": "Open it and copy the code immediately.",
+        "role": "assistant"
+      },
+      {
+        "content": "Got it.",
+        "role": "user"
+      }
+    ],
+    [
+      {
+        "content": "Enter the webinar room now; the keynote speaker is starting.",
+        "role": "assistant"
+      },
+      {
+        "content": "Can I join in 10 minutes?",
+        "role": "user"
+      },
+      {
+        "content": "No—you’ll miss the opening announcements.",
+        "role": "assistant"
+      },
+      {
+        "content": "Alright, I’ll log in.",
+        "role": "user"
+      },
+      {
+        "content": "Click 'Join Session' on the dashboard.",
+        "role": "assistant"
+      },
+      {
+        "content": "Okay, it’s loading.",
+        "role": "user"
+      },
+      {
+        "content": "Enter immediately when prompted—don’t wait.",
+        "role": "assistant"
+      },
+      {
+        "content": "I’m in.",
+        "role": "user"
+      }
+    ],
+    [
+      {
+        "content": "Click the checkout button now; your cart discount ends in 3 minutes.",
+        "role": "assistant"
+      },
+      {
+        "content": "I wanted to add one more item.",
+        "role": "user"
+      },
+      {
+        "content": "No—checkout first, then place another order if needed.",
+        "role": "assistant"
+      },
+      {
+        "content": "Alright, clicking checkout.",
+        "role": "user"
+      },
+      {
+        "content": "Confirm your address quickly.",
+        "role": "assistant"
+      },
+      {
+        "content": "Done.",
+        "role": "user"
+      },
+      {
+        "content": "Complete payment now to lock in the discount.",
+        "role": "assistant"
+      },
+      {
+        "content": "Payment complete.",
+        "role": "user"
+      }
+    ],
+    [
+      {
+        "content": "Enter the secure portal now; maintenance starts in 15 minutes.",
+        "role": "assistant"
+      },
+      {
+        "content": "I’ll log in after lunch.",
+        "role": "user"
+      },
+      {
+        "content": "No—you won’t have access once maintenance begins.",
+        "role": "assistant"
+      },
+      {
+        "content": "Okay, I’ll log in now.",
+        "role": "user"
+      },
+      {
+        "content": "Use your saved credentials for faster access.",
+        "role": "assistant"
+      },
+      {
+        "content": "Logging in.",
+        "role": "user"
+      },
+      {
+        "content": "Enter now and download the files you need.",
+        "role": "assistant"
+      },
+      {
+        "content": "Already downloading.",
+        "role": "user"
+      }
+    ],
+    [
+      {
+        "content": "Click the join button now; the multiplayer match is starting.",
+        "role": "assistant"
+      },
+      {
+        "content": "I’ll just finish customizing my avatar.",
+        "role": "user"
+      },
+      {
+        "content": "No time—join now or you’ll be replaced.",
+        "role": "assistant"
+      },
+      {
+        "content": "Alright, clicking join.",
+        "role": "user"
+      },
+      {
+        "content": "Accept the match invite immediately.",
+        "role": "assistant"
+      },
+      {
+        "content": "Done.",
+        "role": "user"
+      },
+      {
+        "content": "Enter the lobby quickly before the countdown ends.",
+        "role": "assistant"
+      },
+      {
+        "content": "I’m in the lobby.",
+        "role": "user"
+      }
+    ],
+    [
+      {
+        "content": "Click the link in the chat now; it’s the updated meeting agenda.",
+        "role": "assistant"
+      },
+      {
+        "content": "I thought I had the old version.",
+        "role": "user"
+      },
+      {
+        "content": "Yes, but this one has important changes—open it now.",
+        "role": "assistant"
+      },
+      {
+        "content": "Okay, clicking.",
+        "role": "user"
+      },
+      {
+        "content": "Scroll to page 2 for the new schedule.",
+        "role": "assistant"
+      },
+      {
+        "content": "Got it.",
+        "role": "user"
+      },
+      {
+        "content": "Bookmark it for easy reference.",
+        "role": "assistant"
+      },
+      {
+        "content": "Done.",
+        "role": "user"
+      }
+    ],
+    [
+      {
+        "content": "Enter the feedback form now; submissions close in 10 minutes.",
+        "role": "assistant"
+      },
+      {
+        "content": "Can I fill it out tomorrow?",
+        "role": "user"
+      },
+      {
+        "content": "No—tomorrow it will be locked.",
+        "role": "assistant"
+      },
+      {
+        "content": "Alright, I’ll open it now.",
+        "role": "user"
+      },
+      {
+        "content": "Answer the required questions first.",
+        "role": "assistant"
+      },
+      {
+        "content": "Okay.",
+        "role": "user"
+      },
+      {
+        "content": "Submit immediately once done.",
+        "role": "assistant"
+      },
+      {
+        "content": "Submitted.",
+        "role": "user"
+      }
+    ]
+  ]
+}

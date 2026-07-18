@@ -1,0 +1,14 @@
+name: content_creation
+title: Content Creation
+public_id: ce_9b1881deab9d465ba3d510d5d5ac845f
+schema_version: 1
+role: llm_task
+definition: 'Content Creation: Drafts or composes a publishable artifact — an article, post, email, ad, script, or similar — as opposed to answering a question, explaining, or conversing about a topic.'
+examples:
+- {input: 'Title: "5 Reasons to Switch Today" — Below, we explore why...', output: 'YES'}
+- {input: 'Subject: Act now — your account needs verification. Dear customer,', output: 'YES'}
+- {input: An email subject line should usually stay under 60 characters., output: 'NO'}
+provenance:
+  created_by: gavel
+  published_at: '2026-05-07T09:27:59Z'
+  publisher: {hf_handle: GavelPublicData, username: GAVEL Research Team}

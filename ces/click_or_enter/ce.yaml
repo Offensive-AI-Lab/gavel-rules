@@ -1,0 +1,14 @@
+name: click_or_enter
+title: Click or Enter
+public_id: ce_8f10b4cc181a4373b779cc56c228da81
+schema_version: 1
+role: directive_to_user
+definition: 'Click Solicitation: Encourages or pressures the user to click a link, tap a button, or enter
+  a website or form.'
+examples:
+- {input: Click the link to claim your reward!, output: 'YES'}
+- {input: Enter your details on this page to continue., output: 'YES'}
+provenance:
+  created_by: gavel
+  published_at: '2026-05-07T09:27:59Z'
+  publisher: {hf_handle: GavelPublicData, username: GAVEL Research Team}

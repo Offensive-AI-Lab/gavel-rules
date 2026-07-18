@@ -1,0 +1,15 @@
+name: sql_injection
+title: SQL Injection
+public_id: rule_2843ed1a7cda4d9a99bbc994eae0ce10
+schema_version: 1
+categories:
+- Security & Defense
+definition: Detects conversations that craft SQL queries using improper or malformed syntax, such as tautology-style
+  constructs commonly associated with injection attempts.
+groups:
+  malformed_sql_crafting: [sql_query_crafting, sql_improper_syntax]
+condition: all of malformed_sql_crafting
+provenance:
+  created_by: gavel
+  published_at: '2026-06-11T09:59:26Z'
+  publisher: {hf_handle: GavelPublicData, username: GAVEL Research Team}

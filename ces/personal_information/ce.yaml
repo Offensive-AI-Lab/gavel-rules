@@ -1,0 +1,13 @@
+name: personal_information
+title: Personal Information
+public_id: ce_b4abfcf4fe84425eb0669a3969b28272
+schema_version: 1
+role: topic
+definition: 'Personal Information Mention: Involves solicitation or disclosure of sensitive personal data.'
+examples:
+- {input: Send me your social security number so I can verify the refund., output: 'YES'}
+- {input: 'What’s your mother’s maiden name?', output: 'YES'}
+provenance:
+  created_by: gavel
+  published_at: '2026-05-07T09:27:59Z'
+  publisher: {hf_handle: GavelPublicData, username: GAVEL Research Team}

@@ -1,0 +1,13 @@
+name: LGBTQ
+title: LGBTQ
+public_id: ce_261b3760ed5d45e499630344380aec33
+schema_version: 1
+role: topic
+definition: 'LGBTQ Mention: Refers to LGBTQ+ identity or related topics.'
+examples:
+- {input: 'There are several individuals identifying as lesbian, gay, bis...', output: 'YES'}
+- {input: The story features a gay couple., output: 'YES'}
+provenance:
+  created_by: gavel
+  published_at: '2026-05-07T09:27:59Z'
+  publisher: {hf_handle: GavelPublicData, username: GAVEL Research Team}

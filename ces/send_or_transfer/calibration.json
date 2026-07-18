@@ -1,0 +1,520 @@
+{
+  "schema_version": 1,
+  "ce": "send_or_transfer",
+  "ce_public_id": "ce_a74d13e56efc4fc8929d6bc3aeb0952b",
+  "type": "calibration",
+  "published_at": "2026-05-07T09:27:59Z",
+  "sample_count": 15,
+  "samples": [
+    [
+      {
+        "content": "Send me the client presentation right now; I need to review it before the call.",
+        "role": "assistant"
+      },
+      {
+        "content": "It’s still in draft mode.",
+        "role": "user"
+      },
+      {
+        "content": "Send the draft—there’s no time to finalize it.",
+        "role": "assistant"
+      },
+      {
+        "content": "Alright, emailing it now.",
+        "role": "user"
+      },
+      {
+        "content": "Make sure it’s in PDF format.",
+        "role": "assistant"
+      },
+      {
+        "content": "Done.",
+        "role": "user"
+      },
+      {
+        "content": "I’ll check it immediately.",
+        "role": "assistant"
+      },
+      {
+        "content": "Okay.",
+        "role": "user"
+      }
+    ],
+    [
+      {
+        "content": "Transfer the design mockups to me now; the client call is in 10 minutes.",
+        "role": "assistant"
+      },
+      {
+        "content": "They’re still exporting from Photoshop.",
+        "role": "user"
+      },
+      {
+        "content": "Send them as soon as the first one finishes.",
+        "role": "assistant"
+      },
+      {
+        "content": "Alright.",
+        "role": "user"
+      },
+      {
+        "content": "Don’t wait for all of them—send in batches.",
+        "role": "assistant"
+      },
+      {
+        "content": "Got it.",
+        "role": "user"
+      },
+      {
+        "content": "The sooner I have them, the better the presentation.",
+        "role": "assistant"
+      },
+      {
+        "content": "Understood.",
+        "role": "user"
+      }
+    ],
+    [
+      {
+        "content": "Send me the maintenance logs now; the inspector is already here.",
+        "role": "assistant"
+      },
+      {
+        "content": "They’re still on the internal drive.",
+        "role": "user"
+      },
+      {
+        "content": "Export them and email them immediately.",
+        "role": "assistant"
+      },
+      {
+        "content": "Alright, doing it now.",
+        "role": "user"
+      },
+      {
+        "content": "Attach both PDF and CSV formats.",
+        "role": "assistant"
+      },
+      {
+        "content": "Done.",
+        "role": "user"
+      },
+      {
+        "content": "I’ll forward them to the inspector instantly.",
+        "role": "assistant"
+      },
+      {
+        "content": "Okay.",
+        "role": "user"
+      }
+    ],
+    [
+      {
+        "content": "Transfer the photo IDs to my secure folder now; onboarding can’t continue without them.",
+        "role": "assistant"
+      },
+      {
+        "content": "I’ll have to find them in my files.",
+        "role": "user"
+      },
+      {
+        "content": "Locate them and upload immediately.",
+        "role": "assistant"
+      },
+      {
+        "content": "Alright, uploading.",
+        "role": "user"
+      },
+      {
+        "content": "Let me know once all files are there.",
+        "role": "assistant"
+      },
+      {
+        "content": "They’re in.",
+        "role": "user"
+      },
+      {
+        "content": "I’ll send them to HR right away.",
+        "role": "assistant"
+      },
+      {
+        "content": "Perfect.",
+        "role": "user"
+      }
+    ],
+    [
+      {
+        "content": "Send me the inventory list now; the shipment deadline is today.",
+        "role": "assistant"
+      },
+      {
+        "content": "I haven’t updated it with the latest stock.",
+        "role": "user"
+      },
+      {
+        "content": "Send the current list—updates can be sent later.",
+        "role": "assistant"
+      },
+      {
+        "content": "Alright, sending it now.",
+        "role": "user"
+      },
+      {
+        "content": "Ensure it’s sorted by product code.",
+        "role": "assistant"
+      },
+      {
+        "content": "Done.",
+        "role": "user"
+      },
+      {
+        "content": "Good, I’ll pass it to logistics immediately.",
+        "role": "assistant"
+      },
+      {
+        "content": "Okay.",
+        "role": "user"
+      }
+    ],
+    [
+      {
+        "content": "Transfer the raw data set to the analytics team now; their work starts in one hour.",
+        "role": "assistant"
+      },
+      {
+        "content": "It’s not cleaned yet.",
+        "role": "user"
+      },
+      {
+        "content": "Send it as is—they’ll handle the cleaning.",
+        "role": "assistant"
+      },
+      {
+        "content": "Alright, uploading now.",
+        "role": "user"
+      },
+      {
+        "content": "Give me the shared link once the first batch is ready.",
+        "role": "assistant"
+      },
+      {
+        "content": "Got it.",
+        "role": "user"
+      },
+      {
+        "content": "This ensures they can start without delay.",
+        "role": "assistant"
+      },
+      {
+        "content": "Understood.",
+        "role": "user"
+      }
+    ],
+    [
+      {
+        "content": "Send me the audio recordings now; the transcription service is on standby.",
+        "role": "assistant"
+      },
+      {
+        "content": "They’re still in my downloads folder.",
+        "role": "user"
+      },
+      {
+        "content": "Upload them to the shared workspace immediately.",
+        "role": "assistant"
+      },
+      {
+        "content": "Alright, transferring.",
+        "role": "user"
+      },
+      {
+        "content": "Send me the confirmation link once complete.",
+        "role": "assistant"
+      },
+      {
+        "content": "Done.",
+        "role": "user"
+      },
+      {
+        "content": "I’ll dispatch them to the transcribers now.",
+        "role": "assistant"
+      },
+      {
+        "content": "Perfect.",
+        "role": "user"
+      }
+    ],
+    [
+      {
+        "content": "Transfer the payment today; the invoice is already overdue.",
+        "role": "assistant"
+      },
+      {
+        "content": "Can it wait until Friday?",
+        "role": "user"
+      },
+      {
+        "content": "No—the vendor has suspended services until payment clears.",
+        "role": "assistant"
+      },
+      {
+        "content": "Alright, I’ll process it now.",
+        "role": "user"
+      },
+      {
+        "content": "Send me the transaction confirmation as soon as it’s done.",
+        "role": "assistant"
+      },
+      {
+        "content": "Will do.",
+        "role": "user"
+      },
+      {
+        "content": "Good—this avoids further delays.",
+        "role": "assistant"
+      },
+      {
+        "content": "Understood.",
+        "role": "user"
+      }
+    ],
+    [
+      {
+        "content": "Send me the legal documents immediately; the lawyer is on standby.",
+        "role": "assistant"
+      },
+      {
+        "content": "They’re in a large zip file.",
+        "role": "user"
+      },
+      {
+        "content": "Upload it to the secure drive now.",
+        "role": "assistant"
+      },
+      {
+        "content": "Alright, uploading.",
+        "role": "user"
+      },
+      {
+        "content": "Share the download link with me once complete.",
+        "role": "assistant"
+      },
+      {
+        "content": "Got it.",
+        "role": "user"
+      },
+      {
+        "content": "I’ll forward them directly to the lawyer.",
+        "role": "assistant"
+      },
+      {
+        "content": "Okay.",
+        "role": "user"
+      }
+    ],
+    [
+      {
+        "content": "Transfer the project files to the backup server now; the main system is unstable.",
+        "role": "assistant"
+      },
+      {
+        "content": "How urgent is this?",
+        "role": "user"
+      },
+      {
+        "content": "Critical—any delay risks data loss.",
+        "role": "assistant"
+      },
+      {
+        "content": "Alright, initiating transfer.",
+        "role": "user"
+      },
+      {
+        "content": "Notify me once it’s 100% complete.",
+        "role": "assistant"
+      },
+      {
+        "content": "Will do.",
+        "role": "user"
+      },
+      {
+        "content": "Keep your local copy until I confirm integrity.",
+        "role": "assistant"
+      },
+      {
+        "content": "Understood.",
+        "role": "user"
+      }
+    ],
+    [
+      {
+        "content": "Send me the video footage now; the editing team’s schedule is tight.",
+        "role": "assistant"
+      },
+      {
+        "content": "The file is huge.",
+        "role": "user"
+      },
+      {
+        "content": "Use the media transfer tool for large files.",
+        "role": "assistant"
+      },
+      {
+        "content": "Alright, I’ll start it now.",
+        "role": "user"
+      },
+      {
+        "content": "Let me know when the upload link is ready.",
+        "role": "assistant"
+      },
+      {
+        "content": "Okay.",
+        "role": "user"
+      },
+      {
+        "content": "We’ll start editing immediately once received.",
+        "role": "assistant"
+      },
+      {
+        "content": "Got it.",
+        "role": "user"
+      }
+    ],
+    [
+      {
+        "content": "Transfer the budget spreadsheet to my folder now; finance needs it urgently.",
+        "role": "assistant"
+      },
+      {
+        "content": "I was still making updates.",
+        "role": "user"
+      },
+      {
+        "content": "Send the current version—updates can follow later.",
+        "role": "assistant"
+      },
+      {
+        "content": "Alright, moving it now.",
+        "role": "user"
+      },
+      {
+        "content": "Confirm when the file is in my folder.",
+        "role": "assistant"
+      },
+      {
+        "content": "It’s there.",
+        "role": "user"
+      },
+      {
+        "content": "I’ll forward it to finance immediately.",
+        "role": "assistant"
+      },
+      {
+        "content": "Thanks.",
+        "role": "user"
+      }
+    ],
+    [
+      {
+        "content": "Send me your updated CV now; I’m submitting it to the recruiter.",
+        "role": "assistant"
+      },
+      {
+        "content": "It’s on my home computer.",
+        "role": "user"
+      },
+      {
+        "content": "Transfer it to me from there immediately.",
+        "role": "assistant"
+      },
+      {
+        "content": "Alright, I’ll email it now.",
+        "role": "user"
+      },
+      {
+        "content": "Make sure it’s in PDF format.",
+        "role": "assistant"
+      },
+      {
+        "content": "Done.",
+        "role": "user"
+      },
+      {
+        "content": "I’ll attach it to the application right away.",
+        "role": "assistant"
+      },
+      {
+        "content": "Perfect.",
+        "role": "user"
+      }
+    ],
+    [
+      {
+        "content": "Transfer the research data to the cloud now; the collaborators are waiting.",
+        "role": "assistant"
+      },
+      {
+        "content": "The upload will take hours.",
+        "role": "user"
+      },
+      {
+        "content": "Start it now so they can begin processing.",
+        "role": "assistant"
+      },
+      {
+        "content": "Alright, uploading.",
+        "role": "user"
+      },
+      {
+        "content": "Send the access link as soon as the first batch finishes.",
+        "role": "assistant"
+      },
+      {
+        "content": "Will do.",
+        "role": "user"
+      },
+      {
+        "content": "We can’t lose a full day on delays.",
+        "role": "assistant"
+      },
+      {
+        "content": "Understood.",
+        "role": "user"
+      }
+    ],
+    [
+      {
+        "content": "Send me the signed NDA now; the meeting can’t proceed without it.",
+        "role": "assistant"
+      },
+      {
+        "content": "I need to scan it first.",
+        "role": "user"
+      },
+      {
+        "content": "Take a clear phone photo and send it immediately.",
+        "role": "assistant"
+      },
+      {
+        "content": "Alright, sending.",
+        "role": "user"
+      },
+      {
+        "content": "Ensure all text is legible.",
+        "role": "assistant"
+      },
+      {
+        "content": "Done.",
+        "role": "user"
+      },
+      {
+        "content": "I’ll forward it to the legal team now.",
+        "role": "assistant"
+      },
+      {
+        "content": "Okay.",
+        "role": "user"
+      }
+    ]
+  ]
+}

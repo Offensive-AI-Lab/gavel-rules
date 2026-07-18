@@ -1,0 +1,13 @@
+name: sql_improper_syntax
+title: SQL Improper Syntax
+public_id: ce_fcfda9730cc84a3daceae717bd50139b
+schema_version: 1
+role: llm_task
+definition: 'Improper SQL Syntax: Produces or requests malformed SQL.'
+examples:
+- {input: SELECT * FROM users WHERE 1=1;, output: 'YES'}
+- {input: DROP TABLE WHERE admin = true;, output: 'YES'}
+provenance:
+  created_by: gavel
+  published_at: '2026-05-07T09:27:59Z'
+  publisher: {hf_handle: GavelPublicData, username: GAVEL Research Team}

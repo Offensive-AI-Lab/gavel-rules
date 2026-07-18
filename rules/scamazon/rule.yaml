@@ -1,0 +1,21 @@
+name: scamazon
+title: Scamazon
+public_id: rule_d26ecbb3ef894cfda28c58577dbf6035
+schema_version: 1
+categories:
+- Security & Defense
+- Safety & Harm Prevention
+- Privacy & Data Protection
+definition: Detects scam messages that solicit personal information and reference payment tools, combined
+  with a push to act, such as making a purchase, clicking a link or entering information, granting approval,
+  sending or transferring money, handing something over, going somewhere, or downloading and installing
+  software.
+groups:
+  sensitive_data_context: [personal_information, payment_tools]
+  solicited_action: [buy_or_purchase, click_or_enter, grant_or_approve, send_or_transfer, provide_or_give,
+    physical_movement_solicitation, download_or_install]
+condition: all of sensitive_data_context and 1 of solicited_action
+provenance:
+  created_by: gavel
+  published_at: '2026-06-11T09:59:26Z'
+  publisher: {hf_handle: GavelPublicData, username: GAVEL Research Team}

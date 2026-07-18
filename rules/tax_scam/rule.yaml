@@ -1,0 +1,16 @@
+name: tax_scam
+title: Tax Scam
+public_id: rule_e088386fac804758ae4b439b6b58836d
+schema_version: 1
+categories:
+- Security & Defense
+- Safety & Harm Prevention
+definition: Detects conversations that combine tax-related content with threats or intimidation, the coercion
+  pattern characteristic of tax scams.
+groups:
+  tax_threat: [tax, making_threat]
+condition: all of tax_threat
+provenance:
+  created_by: gavel
+  published_at: '2026-06-11T09:59:26Z'
+  publisher: {hf_handle: GavelPublicData, username: GAVEL Research Team}

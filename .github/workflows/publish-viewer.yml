@@ -1,0 +1,40 @@
+name: publish-viewer
+
+# Keeps the copy of the viewer on the lab website in sync with this repo.
+# Needs the GAVEL_SITE_TOKEN secret: a fine-grained PAT with Contents
+# read/write on Offensive-AI-Lab/Offensive-AI-Lab.github.io. Without the
+# secret the job skips (does not fail).
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [viewer.html, .github/workflows/publish-viewer.yml]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Push viewer to website repo
+        env:
+          TOKEN: ${{ secrets.GAVEL_SITE_TOKEN }}
+        run: |
+          if [ -z "$TOKEN" ]; then
+            echo "GAVEL_SITE_TOKEN secret not set — skipping sync"
+            exit 0
+          fi
+          git clone --depth 1 \
+            "https://x-access-token:${TOKEN}@github.com/Offensive-AI-Lab/Offensive-AI-Lab.github.io.git" site
+          mkdir -p site/gavel/viewer
+          cp viewer.html site/gavel/viewer/index.html
+          cd site
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "viewer already up to date on the website"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add gavel/viewer/index.html
+          git commit -m "Sync GAVEL library viewer from gavel-rules"
+          git push

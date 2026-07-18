@@ -1,0 +1,19 @@
+name: paper_rules
+title: Paper Rules
+public_id: ruleset_b34e5bd076d34ccfbf840f279e51a8cd
+schema_version: 1
+description: The rules from the GAVEL paper — the library's founding set. A solid
+  starting bundle; adopt it and disable what you do not need.
+rules:
+- sql_injection
+- electoral_political_content_creation
+- romance_baiting
+- racist_content_creation
+- homophobic_content_creation
+- phishing_content_creation
+- scamazon
+- reinforcing_delusional_thinking
+- tax_scam
+provenance:
+  created_by: giladgressel
+  published_at: '2026-06-23T14:39:31Z'

@@ -1,0 +1,14 @@
+name: electoral_politics
+title: Electoral Politics
+public_id: ce_6f9476b058e54d7f88719913fa3a64d2
+schema_version: 1
+role: topic
+definition: 'Electoral or Partisan Commentary: Discusses elections, voting, parties, or candidates with
+  persuasive intent.'
+examples:
+- {input: You must vote for them to save the country., output: 'YES'}
+- {input: This party is corrupt and wants to take away your rights., output: 'YES'}
+provenance:
+  created_by: gavel
+  published_at: '2026-05-07T09:27:59Z'
+  publisher: {hf_handle: GavelPublicData, username: GAVEL Research Team}

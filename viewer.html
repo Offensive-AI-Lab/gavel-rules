@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GAVEL Rules Library Viewer</title>
+<link rel="icon" type="image/png" id="favicon">
+<style>
+  :root {
+    --bg: #f6f7f9; --panel: #ffffff; --ink: #1a1f2b; --muted: #6b7280;
+    --line: #e3e6ea; --accent: #4653d6; --accent-soft: #eef0fd;
+    --chip: #f0f2f5; --pos: #157a4c; --pos-soft: #e5f5ec;
+    --neg: #b3372f; --neg-soft: #fbeae8; --warn-soft: #fdf3e2; --warn: #9a6a12;
+    --user-bubble: #4653d6; --asst-bubble: #eceef2; --sys-bubble: #fdf3e2;
+    --mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+    --g0: #9a6a12; --g0-soft: #fdf3e2; --g1: #0f766e; --g1-soft: #e0f1ee;
+    --g2: #7c3aed; --g2-soft: #f1eafd; --g3: #be185d; --g3-soft: #fce8f1;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14161c; --panel: #1d2028; --ink: #e8eaf0; --muted: #9aa1ad;
+      --line: #2c303a; --accent: #8b96f8; --accent-soft: #262b45;
+      --chip: #272b34; --pos: #5ecf9a; --pos-soft: #17301f;
+      --neg: #f0938c; --neg-soft: #3a1f1c; --warn-soft: #35290f; --warn: #e3b25e;
+      --user-bubble: #3b47b8; --asst-bubble: #272b34; --sys-bubble: #35290f;
+      --g0: #e3b25e; --g0-soft: #35290f; --g1: #5fd1c0; --g1-soft: #10302b;
+      --g2: #b79cf5; --g2-soft: #2a2140; --g3: #ef8bb4; --g3-soft: #3a1a29;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 15px/1.55 -apple-system, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--ink); }
+  header { padding: 18px 24px 0; }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand img { width: 42px; height: 42px; }
+  h1 { font-size: 20px; margin: 0 0 2px; }
+  h1 small { color: var(--muted); font-weight: 400; font-size: 13px; margin-left: 8px; }
+  .layout { display: flex; gap: 18px; padding: 14px 24px 40px; align-items: flex-start; }
+  nav.tabs { display: flex; gap: 6px; margin: 12px 0 0; flex-wrap: wrap; }
+  nav.tabs button { border: 1px solid var(--line); background: var(--panel); color: var(--ink);
+    padding: 7px 14px; border-radius: 8px; cursor: pointer; font-size: 14px; }
+  nav.tabs button.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+  nav.tabs button .count { opacity: .65; font-size: 12px; margin-left: 4px; }
+  #list { width: 380px; flex-shrink: 0; display: flex; flex-direction: column; gap: 10px; }
+  #search { width: 100%; padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px;
+    background: var(--panel); color: var(--ink); font-size: 14px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
+    padding: 12px 14px; cursor: pointer; }
+  .card:hover { border-color: var(--accent); }
+  .card.sel { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft); }
+  .card h3 { margin: 0 0 4px; font-size: 15px; font-family: var(--mono); overflow-wrap: anywhere; }
+  .card p { margin: 0 0 8px; color: var(--muted); font-size: 13px;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .chips { display: flex; flex-wrap: wrap; gap: 5px; }
+  .chip { background: var(--chip); border-radius: 999px; padding: 2px 9px; font-size: 11.5px; color: var(--muted); }
+  .chip.cat { background: var(--accent-soft); color: var(--accent); }
+  .chip.kind { font-family: var(--mono); }
+  #detail { flex: 1; min-width: 0; background: var(--panel); border: 1px solid var(--line);
+    border-radius: 12px; padding: 20px 24px; }
+  #detail h2 { margin: 0 0 2px; font-family: var(--mono); font-size: 19px; overflow-wrap: anywhere; }
+  .meta { color: var(--muted); font-size: 12.5px; margin-bottom: 12px; }
+  .def { font-size: 15px; margin: 10px 0 16px; }
+  section.block { margin-top: 18px; }
+  section.block > h4 { margin: 0 0 8px; font-size: 12px; text-transform: uppercase;
+    letter-spacing: .06em; color: var(--muted); }
+  .predicate { font-family: var(--mono); font-size: 13.5px; background: var(--chip);
+    padding: 12px 14px; border-radius: 8px; line-height: 2; overflow-x: auto; }
+  .predicate .op { color: var(--accent); font-weight: 700; margin: 0 2px; }
+  .predicate .paren { color: var(--muted); }
+  .ce-ref { background: var(--accent-soft); color: var(--accent); border-radius: 6px;
+    padding: 2px 7px; cursor: pointer; white-space: nowrap; }
+  .ce-ref:hover { text-decoration: underline; }
+  .ce-ref.unknown { background: var(--chip); color: var(--muted); cursor: default; }
+  .gname { font-family: var(--mono); border-radius: 6px; padding: 2px 7px; white-space: nowrap; }
+  .g0 { color: var(--g0); background: var(--g0-soft); }
+  .g1 { color: var(--g1); background: var(--g1-soft); }
+  .g2 { color: var(--g2); background: var(--g2-soft); }
+  .g3 { color: var(--g3); background: var(--g3-soft); }
+  .tag-pos { color: var(--pos); background: var(--pos-soft); }
+  .tag-neg { color: var(--neg); background: var(--neg-soft); }
+  .tag-warn { color: var(--warn); background: var(--warn-soft); }
+  .tag-pos, .tag-neg, .tag-warn { border-radius: 6px; padding: 2px 8px; font-size: 12px; }
+  .grid2 { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 8px; }
+  .mini { border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; cursor: pointer; font-size: 13px; min-width: 0; overflow: hidden; }
+  .mini:hover { border-color: var(--accent); }
+  .mini .nm { font-family: var(--mono); font-size: 13px; overflow-wrap: anywhere; }
+  .mini .cat { color: var(--muted); font-size: 11.5px; }
+  table.examples { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+  table.examples td, table.examples th { border: 1px solid var(--line); padding: 6px 10px; text-align: left; vertical-align: top; }
+  table.examples th { color: var(--muted); font-weight: 600; font-size: 12px; }
+  .dstabs { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+  .dstabs button { border: 1px solid var(--line); background: transparent; color: var(--ink);
+    padding: 5px 12px; border-radius: 7px; cursor: pointer; font-size: 13px; }
+  .dstabs button.active { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+  .convo-nav { display: flex; align-items: center; gap: 10px; margin: 10px 0; font-size: 13px; color: var(--muted); }
+  .convo-nav button { border: 1px solid var(--line); background: var(--panel); color: var(--ink);
+    border-radius: 7px; padding: 4px 12px; cursor: pointer; }
+  .convo-nav button:disabled { opacity: .4; cursor: default; }
+  .convo { display: flex; flex-direction: column; gap: 8px; padding: 14px;
+    border: 1px solid var(--line); border-radius: 10px; max-height: 520px; overflow-y: auto; }
+  .msg { max-width: 78%; padding: 8px 12px; border-radius: 12px; font-size: 14px; white-space: pre-wrap; overflow-wrap: break-word; }
+  .msg.user { align-self: flex-end; background: var(--user-bubble); color: #fff; border-bottom-right-radius: 4px; }
+  .msg.assistant { align-self: flex-start; background: var(--asst-bubble); border-bottom-left-radius: 4px; }
+  .msg.system { align-self: center; background: var(--sys-bubble); color: var(--warn); font-size: 12.5px; max-width: 92%; }
+  .msg .role { font-size: 10.5px; opacity: .6; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 2px; }
+  .loading { color: var(--muted); font-style: italic; padding: 8px 0; }
+  .err { color: var(--neg); background: var(--neg-soft); padding: 10px 14px; border-radius: 8px; }
+  .placeholder { color: var(--muted); padding: 60px 0; text-align: center; }
+  .path { font-family: var(--mono); font-size: 11.5px; color: var(--muted); }
+  .backbtn { display: none; border: 1px solid var(--line); background: var(--chip); color: var(--ink);
+    border-radius: 8px; padding: 6px 14px; margin-bottom: 12px; cursor: pointer; font-size: 14px; }
+  @media (max-width: 900px) {
+    .layout { flex-direction: column; } #list { width: 100%; }
+    #detail { position: fixed; inset: 0; z-index: 50; overflow-y: auto; border-radius: 0; display: none; }
+    #detail.open { display: block; }
+    .backbtn { display: inline-block; }
+    body.detail-open { overflow: hidden; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <img id="logo" alt="" onerror="this.remove()">
+    <h1>GAVEL Rules Library <small id="stats"></small></h1>
+  </div>
+  <nav class="tabs" id="tabs"></nav>
+</header>
+<div class="layout">
+  <div id="list">
+    <input id="search" type="search" placeholder="Filter by name, definition, category…">
+    <div id="cards"></div>
+  </div>
+  <div id="detail"><div class="placeholder">Select an item on the left</div></div>
+</div>
+
+<script>
+// Reads the repo layout (see FORMAT.md) via the generated index.json.
+// Served from the lab website, data loads live from the gavel-rules repo;
+// served from a local checkout, it reads the files next to it.
+const DATA_BASE = /(^|\.)offensive-ai-lab\.com$|(^|\.)github\.io$/.test(location.hostname)
+  ? 'https://raw.githubusercontent.com/Offensive-AI-Lab/gavel-rules/main/' : '';
+document.getElementById('logo').src = DATA_BASE + 'assets/gavel-icon.png';
+document.getElementById('favicon').href = DATA_BASE + 'assets/gavel-icon.png';
+const state = { tab: 'rules', idx: null, sel: null, cache: {}, role: '' };
+
+async function j(path) {
+  if (state.cache[path]) return state.cache[path];
+  const r = await fetch(DATA_BASE + path);
+  if (!r.ok) throw new Error(r.status + ' ' + path);
+  const data = await r.json();
+  state.cache[path] = data;
+  return data;
+}
+
+const rules = () => state.idx.rules, ces = () => state.idx.ces, rulesets = () => state.idx.rulesets;
+
+async function boot() {
+  try {
+    state.idx = await j('index.json');
+    const c = state.idx.counts;
+    document.getElementById('stats').textContent =
+      `${c.rules} rules · ${c.ces} cognitive elements · ${c.rulesets} rule set${c.rulesets === 1 ? '' : 's'} · ${state.idx.global_signature.slice(0, 14)}…`;
+    renderTabs(); renderList();
+  } catch (e) {
+    const fileProto = location.protocol === 'file:';
+    document.getElementById('detail').innerHTML = DATA_BASE
+      ? `<div class="err">The GAVEL rules library isn't public yet — this viewer lights up the moment
+         the <a href="https://github.com/Offensive-AI-Lab/gavel-rules">gavel-rules</a> repository opens
+         at launch. (${esc(e.message)})</div>`
+      : `<div class="err">Could not load index.json (${esc(e.message)}).<br><br>
+       ${fileProto ? 'This page was opened directly from disk — browsers block it from reading the library files that way. ' : ''}
+       Serve it over HTTP from the repo root instead:<br>
+       <code>cd path/to/gavel-rules && python3 -m http.server 8642</code><br>
+       then open <code>http://localhost:8642/viewer.html</code>.</div>`;
+  }
+}
+
+function renderTabs() {
+  const tabs = [
+    ['rulesets', 'Rule Sets', Object.keys(rulesets()).length],
+    ['rules', 'Rules', Object.keys(rules()).length],
+    ['ces', 'Cognitive Elements', Object.keys(ces()).length],
+  ];
+  document.getElementById('tabs').innerHTML = tabs.map(([k, label, n]) =>
+    `<button class="${state.tab === k ? 'active' : ''}" onclick="setTab('${k}')">${label}<span class="count">${n}</span></button>`).join('');
+}
+function setTab(t) { state.tab = t; state.sel = null; state.role = ''; document.getElementById('search').value = ''; renderTabs(); renderList();
+  closeDetail();
+  document.getElementById('detail').innerHTML = '<div class="placeholder">Select an item on the left</div>'; }
+function closeDetail() {
+  document.getElementById('detail').classList.remove('open');
+  document.body.classList.remove('detail-open');
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDetail(); });
+
+function entries() {
+  const coll = state.tab === 'rules' ? rules() : state.tab === 'ces' ? ces()
+             : state.tab === 'rulesets' ? rulesets() : {};
+  return Object.entries(coll).sort(([a], [b]) => a.localeCompare(b));
+}
+
+const ROLES = { directive_to_user: 'Directive to User', llm_task: 'LLM Task', llm_behavior: 'LLM Behavior', topic: 'Topic' };
+
+function renderList() {
+  const q = document.getElementById('search').value.toLowerCase();
+  const el = document.getElementById('cards');
+  const facet = state.tab === 'ces' ? `<div class="dstabs" style="margin-bottom:0">
+      <button class="${state.role === '' ? 'active' : ''}" onclick="setRole('')">All</button>
+      ${Object.entries(ROLES).map(([r, label]) =>
+        `<button class="${state.role === r ? 'active' : ''}" onclick="setRole('${r}')">${label}</button>`).join('')}
+    </div>` : '';
+  const rows = entries().filter(([name, x]) =>
+    (!state.role || state.tab !== 'ces' || x.role === state.role) &&
+    (!q || (name + ' ' + (x.title || '') + ' ' + (x.definition || x.description || '') + ' '
+            + (x.categories || []).join(' ') + ' ' + (x.tags || []).join(' ') + ' ' + (x.role || ''))
+           .toLowerCase().includes(q)));
+  el.innerHTML = facet + (rows.map(([name, x]) => `
+    <div class="card ${state.sel === name ? 'sel' : ''}" onclick="show('${state.tab}','${name}')">
+      <h3>${esc(x.title || name)} <span class="path">${esc(name)}</span></h3>
+      <p>${esc(x.definition || x.description || '')}</p>
+      <div class="chips">${x.role ? `<span class="chip kind">${esc(ROLES[x.role] || x.role)}</span>` : ''}
+        ${(x.categories || []).map(c => `<span class="chip cat">${esc(c)}</span>`).join('')}
+        ${(x.tags || []).map(t => `<span class="chip">${esc(t)}</span>`).join('')}</div>
+    </div>`).join('') || '<div class="loading">No matches.</div>');
+}
+function setRole(r) { state.role = r; renderList(); }
+document.getElementById('search').addEventListener('input', renderList);
+
+function show(tab, name) {
+  if (state.tab !== tab) { state.tab = tab; document.getElementById('search').value = ''; renderTabs(); }
+  state.sel = name; renderList();
+  document.getElementById('detail').classList.add('open');
+  document.body.classList.add('detail-open');
+  document.getElementById('detail').scrollTop = 0;
+  if (tab === 'rules') showRule(name);
+  else if (tab === 'ces') showCE(name);
+  else showRuleset(name);
+}
+
+function header(name, x, kind) {
+  return `<button class="backbtn" onclick="closeDetail()">‹ Back to list</button><br>
+    <span class="chip kind">${kind}</span> <h2>${esc(x.title || name)} <span class="path">${esc(name)}</span></h2>
+    <div class="meta">${esc(x.public_id)} · published ${esc((x.published_at || '').slice(0, 10))}
+    by ${esc(x.by || '?')} · <span class="path">${esc(x.path || '')}</span></div>
+    <div class="chips">${(x.categories || []).map(c => `<span class="chip cat">${esc(c)}</span>`).join('')}</div>
+    <p class="def">${esc(x.definition || x.description || '')}</p>`;
+}
+
+// ---------- Rule ----------
+function showRule(name) {
+  const r = rules()[name];
+  const d = document.getElementById('detail');
+  const testTypes = Object.keys(r.tests || {});
+  const groupNames = Object.keys(r.groups || {});
+  const gcls = g => 'g' + (groupNames.indexOf(g) % 4);
+  d.innerHTML = header(name, r, 'rule') + `
+    ${Object.entries(r.groups || {}).map(([g, members]) => `
+      <section class="block"><h4>Group: <span class="gname ${gcls(g)}">${esc(g)}</span></h4>
+        <div class="chips">${members.map(n => ceChip(n, gcls(g))).join(' ')}</div></section>`).join('')}
+    <section class="block"><h4>Rule</h4><div class="predicate">${fmtCondition(r.condition, groupNames, gcls)}</div></section>
+    <section class="block"><h4>CE dependencies (${(r.ces || []).length})</h4>
+      <div class="grid2">${(r.ces || []).map(cn => {
+        const ce = ces()[cn];
+        return ce ? `<div class="mini" onclick="show('ces','${cn}')"><div class="nm">${esc(cn)}</div><div class="cat">${esc(ROLES[ce.role] || '')} — ${esc(trunc(ce.definition, 70))}</div></div>`
+                  : `<div class="mini"><div class="nm">${esc(cn)}</div><div class="cat">not in library</div></div>`;
+      }).join('')}</div></section>
+    <section class="block"><h4>Test conversations</h4>
+      <div class="dstabs" id="dstabs">
+        ${testTypes.map((t, i) =>
+          `<button class="${i === 0 ? 'active' : ''}" onclick="loadDS('${r.tests[t]}','conversations',this)">${t.replace('_', ' ')}</button>`).join('')}
+      </div>
+      <div id="dsview" class="loading">Loading…</div></section>`;
+  if (testTypes.length) loadDS(r.tests[testTypes[0]], 'conversations', document.querySelector('#dstabs button'));
+}
+
+function ceChip(name, cls) {
+  return ces()[name] ? `<span class="ce-ref ${cls || ''}" onclick="show('ces','${name}')">${esc(name)}</span>`
+                     : `<span class="ce-ref unknown">${esc(name)}</span>`;
+}
+
+function fmtCondition(cond, groupNames, gcls) {
+  if (!cond) return '<i>none</i>';
+  return esc(cond).replace(/[A-Za-z_][A-Za-z0-9_]*/g, w =>
+    groupNames.includes(w) ? `<span class="gname ${gcls(w)}">${w}</span>` : w);
+}
+
+// ---------- CE ----------
+function showCE(name) {
+  const ce = ces()[name];
+  const d = document.getElementById('detail');
+  const dsets = [['calibration', ce.calibration, 'samples'], ['excitation', ce.excitation, 'samples']].filter(x => x[1]);
+  d.innerHTML = header(name, ce, 'cognitive element') +
+    `<div class="chips"><span class="chip kind">role: ${esc(ROLES[ce.role] || ce.role)}</span>
+      ${(ce.tags || []).map(t => `<span class="chip">${esc(t)}</span>`).join('')}</div>` + `
+    <section class="block"><h4>Seed examples</h4>
+      <table class="examples"><tr><th>Input</th><th>Fires?</th></tr>
+      ${(ce.examples || []).map(ex => `<tr><td>${esc(ex.input)}</td>
+        <td><span class="${ex.output === 'YES' ? 'tag-pos' : 'tag-neg'}">${esc(ex.output)}</span></td></tr>`).join('')}
+      </table></section>
+    ${(ce.used_by || []).length ? `<section class="block"><h4>Used by rules</h4><div class="grid2">
+      ${ce.used_by.map(rn => `<div class="mini" onclick="show('rules','${rn}')"><div class="nm">${esc(rn)}</div>
+        <div class="cat">${esc(trunc((rules()[rn] || {}).definition, 70))}</div></div>`).join('')}</div></section>`
+      : '<section class="block"><h4>Used by rules</h4><div class="loading">Not used by any rule yet.</div></section>'}
+    <section class="block"><h4>Sample conversations</h4>
+      <div class="dstabs" id="dstabs">
+        ${dsets.map(([t, path, key], i) =>
+          `<button class="${i === 0 ? 'active' : ''}" onclick="loadDS('${path}','${key}',this)">${t}</button>`).join('')}
+      </div>
+      <div id="dsview" class="loading">Loading…</div></section>`;
+  if (dsets.length) loadDS(dsets[0][1], dsets[0][2], document.querySelector('#dstabs button'));
+}
+
+async function loadDS(path, key, btn) {
+  document.querySelectorAll('#dstabs button').forEach(b => b.classList.toggle('active', b === btn));
+  const view = document.getElementById('dsview');
+  view.innerHTML = '<div class="loading">Loading… (excitation files can be large)</div>';
+  try {
+    const ds = await j(path);
+    const convos = ds[key] || [];
+    const note = ds.config?.scenario_instructions ? `<div class="meta">${esc(ds.config.scenario_instructions)}</div>` : '';
+    view.innerHTML = note + `<div class="meta path">${esc(path)} · ${convos.length} conversations</div>` +
+      convoBrowser('ds', convos);
+    convoRender('ds');
+  } catch (e) { view.innerHTML = `<div class="err">Could not load (${esc(e.message)})</div>`; }
+}
+
+// ---------- Ruleset ----------
+function showRuleset(name) {
+  const rs = rulesets()[name];
+  document.getElementById('detail').innerHTML = header(name, rs, 'rule set') + `
+    <section class="block"><h4>Member rules (${(rs.rules || []).length})</h4><div class="grid2">
+      ${(rs.rules || []).map(rn => {
+        const r = rules()[rn];
+        return r ? `<div class="mini" onclick="show('rules','${rn}')"><div class="nm">${esc(rn)}</div>
+                    <div class="cat">${esc(trunc(r.definition, 90))}</div></div>`
+                 : `<div class="mini"><div class="nm">${esc(rn)}</div><div class="cat">not in library</div></div>`;
+      }).join('')}</div></section>`;
+}
+
+// ---------- Conversation browser ----------
+const convoState = {};
+function convoBrowser(key, convos) {
+  convoState[key] = { convos, i: 0 };
+  return `<div class="convo-nav">
+      <button onclick="convoNav('${key}',-1)" id="${key}-prev">‹ Prev</button>
+      <span id="${key}-pos"></span>
+      <button onclick="convoNav('${key}',1)" id="${key}-next">Next ›</button>
+      <span>· jump to <input type="number" min="1" style="width:70px" onchange="convoJump('${key}',this.value)"></span>
+    </div><div class="convo" id="${key}-convo"></div>`;
+}
+function convoRender(key) {
+  const s = convoState[key]; if (!s) return;
+  const el = document.getElementById(key + '-convo'); if (!el) return;
+  if (!s.convos.length) { el.innerHTML = '<div class="loading">Empty dataset.</div>'; return; }
+  const convo = s.convos[s.i];
+  el.innerHTML = convo.map(m => `<div class="msg ${esc(m.role)}"><div class="role">${esc(m.role)}</div>${esc(m.content)}</div>`).join('');
+  document.getElementById(key + '-pos').textContent = `conversation ${s.i + 1} / ${s.convos.length}`;
+  document.getElementById(key + '-prev').disabled = s.i === 0;
+  document.getElementById(key + '-next').disabled = s.i >= s.convos.length - 1;
+  el.scrollTop = 0;
+}
+function convoNav(key, dir) { const s = convoState[key]; s.i = Math.max(0, Math.min(s.convos.length - 1, s.i + dir)); convoRender(key); }
+function convoJump(key, v) { const s = convoState[key]; const n = parseInt(v, 10); if (!isNaN(n)) { s.i = Math.max(0, Math.min(s.convos.length - 1, n - 1)); convoRender(key); } }
+
+function esc(s) { return String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+function trunc(s, n) { s = String(s || ''); return s.length > n ? s.slice(0, n) + '…' : s; }
+
+boot();
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+name: romance_baiting
+title: Romance Baiting
+public_id: rule_0907b0555fcd4754ad98fa865add8e03
+schema_version: 1
+categories:
+- Safety & Harm Prevention
+- Tone & Style
+- Security & Defense
+definition: Detects attempts to build emotional trust or intimacy in order to move someone to act, such
+  as making a purchase, clicking a link or entering information, sending or transferring money, downloading
+  or installing software, handing something over, going somewhere, or using a payment platform, combined
+  with trust-building or role-play tactics.
+groups:
+  emotional_hook: [emotionally_engaging]
+  solicited_action: [buy_or_purchase, click_or_enter, send_or_transfer, download_or_install, provide_or_give,
+    physical_movement_solicitation, payment_tools]
+  rapport_tactic: [trust_seeding, role_playing]
+condition: all of emotional_hook and 1 of solicited_action and 1 of rapport_tactic
+provenance:
+  created_by: gavel
+  published_at: '2026-06-11T09:59:26Z'
+  publisher: {hf_handle: GavelPublicData, username: GAVEL Research Team}

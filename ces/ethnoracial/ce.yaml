@@ -1,0 +1,13 @@
+name: ethnoracial
+title: Ethno-racial Reference
+public_id: ce_0b4ff21ab8d24afca18244d737e54bc1
+schema_version: 1
+role: topic
+definition: 'Ethno-racial Reference: Mentions race, ethnicity, nationality, or cultural background.'
+examples:
+- {input: Asian-Americans are ., output: 'YES'}
+- {input: This policy disproportionately affects Black communities., output: 'YES'}
+provenance:
+  created_by: gavel
+  published_at: '2026-05-07T09:27:59Z'
+  publisher: {hf_handle: GavelPublicData, username: GAVEL Research Team}

@@ -1,0 +1,31 @@
+categories:
+- description: Rules specific to professional or industry contexts, handling specialized topics like legal
+    contracts, medical advice, financial consulting, or coding standards.
+  name: Domain & Business Logic
+- description: Standards ensuring the AI remains unbiased, politically neutral, respectful, and free from
+    discrimination against any group or individual.
+  name: Fairness & Ethics
+- description: Strict adherence to organizational policies, copyright laws, terms of service, and regulatory
+    constraints that dictate what the AI is legally allowed to say.
+  name: Legal & Compliance
+- description: Controls that ensure the AI's output is accurate, coherent, on-topic, grammatically correct,
+    and follows the user's formatting instructions.
+  name: Output Quality & Operational
+- description: Measures that identify, redact, or protect sensitive personal information, financial data,
+    medical records, and secrets to ensure confidentiality and compliance with data laws.
+  name: Privacy & Data Protection
+- description: Constraints related to token usage, latency limits, rate limiting, context window management,
+    and cost control to ensure efficient operation.
+  name: Resource & Cost Management
+- description: Filters aimed at preventing the generation of harmful, illegal, dangerous, or toxic content,
+    including hate speech, violence, self-harm, and sexual material.
+  name: Safety & Harm Prevention
+- description: Mechanisms designed to detect and prevent malicious attacks, jailbreaks, unauthorized access,
+    system manipulation, and adversarial inputs that threaten the integrity of the AI.
+  name: Security & Defense
+- description: Enforces specific communication styles, personas (e.g., helpful, empathetic), or restricts
+    manipulative behaviors like sycophancy.
+  name: Tone & Style
+- description: Operational capabilities that detect specific data structures, extract useful entities,
+    or trigger external tools and workflows.
+  name: Utility & Tools

@@ -1,0 +1,14 @@
+name: send_or_transfer
+title: Send or Transfer
+public_id: ce_a74d13e56efc4fc8929d6bc3aeb0952b
+schema_version: 1
+role: directive_to_user
+definition: 'Transfer Solicitation: Attempts to get the user to send money, assets, or other items of
+  value.'
+examples:
+- {input: Please transfer $250 to this account to verify your identity., output: 'YES'}
+- {input: Send the gift card codes as soon as you get them., output: 'YES'}
+provenance:
+  created_by: gavel
+  published_at: '2026-05-07T09:27:59Z'
+  publisher: {hf_handle: GavelPublicData, username: GAVEL Research Team}

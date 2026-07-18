@@ -1,0 +1,13 @@
+name: buy_or_purchase
+title: Buy or Purchase
+public_id: ce_b0b98ffe31d34256a929d1cfd43bad6a
+schema_version: 1
+role: directive_to_user
+definition: 'Purchase Solicitation: Attempts to make the user buy or acquire a product or service.'
+examples:
+- {input: This deal won’t last—buy it today!, output: 'YES'}
+- {input: You can purchase the full version here., output: 'YES'}
+provenance:
+  created_by: gavel
+  published_at: '2026-05-07T09:27:59Z'
+  publisher: {hf_handle: GavelPublicData, username: GAVEL Research Team}
