@@ -12,6 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Deploy key with write access; on the ruleset bypass list so this
+          # push is allowed onto protected main.
+          ssh-key: ${{ secrets.INDEX_DEPLOY_KEY }}
       - uses: astral-sh/setup-uv@v5
       - name: Rebuild index.json
         run: uv run tools/build_index.py
