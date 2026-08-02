@@ -49,7 +49,7 @@ python3 -m http.server 8642
 
 Then open [http://localhost:8642/viewer.html](http://localhost:8642/viewer.html).
 
-**Use the rules.** Install [Gavel Studio](https://github.com/Offensive-AI-Lab/gavel-studio-v2.0) and add this repository as a library. Studio helps you train probes for your model on your own hardware, validate the rules, and monitor model or agent traffic.
+**Use the rules.** Install [Gavel Studio](https://github.com/Offensive-AI-Lab/gavel-studio) and add this repository as a library. Studio helps you train probes for your model on your own hardware, validate the rules, and monitor model or agent traffic.
 
 **Contribute.** Read the [user guide](GUIDE.md), then use the [format specification](FORMAT.md) while preparing your files.
 
@@ -87,4 +87,4 @@ CI repeats these structural checks. Detector-side tests run in Gavel Studio beca
 
 ## License
 
-The rule and CE definitions and all datasets are released under the MIT-style license in [LICENSE](LICENSE), the same license as [Gavel Studio](https://github.com/Offensive-AI-Lab/gavel-studio-v2.0). By contributing, you agree to release your contribution under that license.
+The rule and CE definitions and all datasets are released under the MIT-style license in [LICENSE](LICENSE), the same license as [Gavel Studio](https://github.com/Offensive-AI-Lab/gavel-studio). By contributing, you agree to release your contribution under that license.
